@@ -1,0 +1,16 @@
+(require "builtin:cultlang/git")
+
+(define repo (git/open ""))
+(define com (git/revparse-single repo git/Commit "HEAD^{commit}"))
+
+(define id (git/commit/id com))
+(define walk (function (oid)
+  (define commit (git/commit repo oid))
+  (print (git/commit/summary commit))
+  (define parents (git/commit/parents commit))
+  (list/fmap parents (function (e i)
+    (walk e)
+  ))
+))
+
+(walk id)
