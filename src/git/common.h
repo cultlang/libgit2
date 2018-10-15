@@ -26,7 +26,7 @@
 // Vendor
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
-#include "git2/git2.h"
+#include "git2.h"
 
 // Deps
 #include "util/all.h"
